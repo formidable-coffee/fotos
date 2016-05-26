@@ -79,7 +79,6 @@ When writing any block of code that is logically subordinate to the line immedia
     // bad:
     var array = ['cat', 'dog', 'fish'];
     ```
-### References
 
 ### References
 
@@ -101,7 +100,6 @@ When writing any block of code that is logically subordinate to the line immedia
 
   > Why? `let` is block-scoped rather than function-scoped like `var`.
 
-
     ```javascript
     // bad
     var count = 1;
@@ -117,7 +115,6 @@ When writing any block of code that is logically subordinate to the line immedia
     ```
 
 - (#references--block-scope) Note that both `let` and `const` are block-scoped.
-
 
     ```javascript
     // const and let only exist in the blocks they are defined in.
@@ -405,7 +402,6 @@ When writing any block of code that is logically subordinate to the line immedia
 ### Arrow Functions
 
 - (#arrows--use-them) When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
-
 
     > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 
