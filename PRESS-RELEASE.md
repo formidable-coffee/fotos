@@ -20,34 +20,26 @@ Once the project moves into development, the press release can be used as a touc
 Formidable Fotos
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
   The target market is millenials and people with large on-line photo footprints. 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   This app will automate the task of scanning back over thousands of photos to get a quick tour down nostalgia lane. Depending on the user's selected social photo storage, a randomly generated photo arc will be displayed highlighting memories over the past several years.
 
 
 ## Problem ##
-  > Describe the problem your product solves.
   Scanning over thousands of photos to see memories is unwieldy and often impossible.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
   Instead of scrolling and trying to load thousands of photos, a user is presented with a curated view with a few representative photos. 
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
   Users can instantly see their trends over time and share their automatically created memories with friends.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
   Simply login, select your favorite photo storage service, and we'll do the rest. 
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
   I loved remembering all the cool places I've been over the years, and seeing how much I've grown as a person! Sharing it with loved ones was the best!
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
   Head over to our website to log-in and get your first photo arc! 
