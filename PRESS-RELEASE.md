@@ -34,7 +34,7 @@ Formidable Fotos
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
-  Instead of scrolling and trying to load thousands of photos, a user is presented with a curated view with a few represnative photos. 
+  Instead of scrolling and trying to load thousands of photos, a user is presented with a curated view with a few representative photos. 
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
@@ -46,7 +46,7 @@ Formidable Fotos
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-  I loved remembereing all the cool places I've been over the years, and seeing how much I've grown as a person! Sharing it with loved ones was the best!
+  I loved remembering all the cool places I've been over the years, and seeing how much I've grown as a person! Sharing it with loved ones was the best!
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
