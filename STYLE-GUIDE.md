@@ -79,7 +79,7 @@ When writing any block of code that is logically subordinate to the line immedia
     // bad:
     var array = ['cat', 'dog', 'fish'];
     ```
-## References
+### References
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](http://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](http://eslint.org/docs/rules/no-const-assign.html)
@@ -401,7 +401,7 @@ When writing any block of code that is logically subordinate to the line immedia
     var dog = 'dog';
     var cat = "cat";
     ```
-## Arrow Functions
+### Arrow Functions
 
   <a name="arrows--use-them"></a><a name="8.1"></a>
   - (#arrows--use-them) When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
