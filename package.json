@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/formidable-coffee/fotos#readme",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.4.5",
     "mongoose": "^4.1.0",
     "react": "^15.1.0",
@@ -27,8 +28,11 @@
 	"react-bootstrap": "^0.29.4"
   },
   "babel": {
-  "presets": ["es2015", "react"]
-  }, 
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.4",
