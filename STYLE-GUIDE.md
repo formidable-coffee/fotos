@@ -79,7 +79,7 @@ When writing any block of code that is logically subordinate to the line immedia
     // bad:
     var array = ['cat', 'dog', 'fish'];
     ```
-## References
+### References
 
 ### References
 
