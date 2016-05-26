@@ -23,6 +23,7 @@
     "express": "^4.4.5",
     "mongoose": "^4.1.0",
     "react": "^15.1.0",
+<<<<<<< HEAD
     "react-dom": "^15.1.0",
 	"react-bootstrap": "^0.29.4"
   },
@@ -42,5 +43,9 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
+=======
+    "react-bootstrap": "^0.29.4",
+    "react-dom": "^15.1.0"
+>>>>>>> 98dc17972933ec89bcf7d2cff349b46a3ae3fcd8
   }
 }
