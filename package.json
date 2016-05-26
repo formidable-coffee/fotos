@@ -1,0 +1,26 @@
+{
+  "name": "fotos",
+  "version": "0.0.0",
+  "description": "https://waffle.io/formidable-coffee/fotos",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formidable-coffee/fotos.git"
+  },
+  "author": "formidable-coffee",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/formidable-coffee/fotos/issues"
+  },
+  "homepage": "https://github.com/formidable-coffee/fotos#readme",
+  "dependencies": {
+    "mongoose": "^4.1.0",
+    "express": "^4.4.5"
+  }
+}
