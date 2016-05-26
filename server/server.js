@@ -1,12 +1,12 @@
 // load up server and basic routes 
 var express = require('express');
 var app = express();
+var helpers = require('./server_helpers/middleware');
 
 
+app.use(helpers.logger);
 
-app.get('/', function (req, res) {
-  res.send('Slinging some HTML');
-});
+app.get('/', helpers.getAll);
 
 
 app.listen(8000, function () {
