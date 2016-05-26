@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react'
 import config from './config.json';
 
@@ -7,6 +6,9 @@ class Greeter extends Component{
     return (
       <div>
         {config.greetText}
+      </div>
+      <div>
+      	GREET
       </div>
     );
   }

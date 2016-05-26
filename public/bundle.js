@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -44,19 +44,16 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var greeter = __webpack_require__(1);
-	document.getElementById('root').appendChild(greeter());
+	module.exports = __webpack_require__(1);
+
 
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
 
-	module.exports = function() {
-	  var greet = document.createElement('div');
-	  greet.textContent = "Hi there and greetings!";
-	  return greet;
-	};
-	      
+	'use strict';
+
+	console.log('I am alive');
 
 /***/ }
 /******/ ]);
