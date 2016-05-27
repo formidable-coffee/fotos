@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
+import Form from './form'
 import { Button } from 'react-bootstrap';
 
 
@@ -16,11 +17,32 @@ var sampleData = [{
 }];
 
 class Main extends React.Component {
+	constructor (props) {
+		super(props);
+		this.submitHandler.bind(this); 
+	}
+	
+	submitHandler (startDate, endDate, options) {
+		console.log("This works", startDate, endDate, options); 
+		$.post({
+			url: '/create',
+			data: {
+				startDate: startDate,
+				endDate: endDate,
+				options: options
+			},
+			sucess: function() {
+				console.log('success'); 
+			}
+		})
+	}
+
 	render () {
 		return (
 			<div>
 				<h1>Formidable Fotos</h1>
 				<Button bsStyle="danger" bsSize="large">Sign In</Button>
+				<Form onSubmit={this.submitHandler} />
 			</div>
 		); 
 	}
