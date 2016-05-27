@@ -4,6 +4,7 @@ var app = express();
 var helpers = require('./server_helpers/middleware');
 var requestHandler = require('./server_helpers/request-handler'); 
 
+var port = 4000;
 
 app.use(helpers.logger);
 app.use(express.static(__dirname + '/../public')); 
@@ -16,6 +17,8 @@ app.post('/signin', requestHandler.signin.post);
 app.get('/create', requestHandler.create.get);
 app.post('/create', requestHandler.create.post); 
 
-app.listen(4000, function () {
-  console.log('Example app listening on port 4000!');
+app.get('/test', requestHandler.test.get);
+
+app.listen(port, function () {
+  console.log('Listening on port: ' + port + '!');
 });

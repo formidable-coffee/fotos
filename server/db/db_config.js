@@ -1,13 +1,20 @@
 // configure the database 
 var mongoose = require('mongoose');
-
-
 mongoose.connect('mongodb://localhost/test');
+var db = mongoose.connection;
 
-var testSchema = mongoose.Schema({
-  name: String
-});
+db.on('error', console.error.bind(console, 'error connecting to db'));
 
-module.exports = mongoose.model('Test', testSchema); 
+db.once('open', function () {
+    console.log('Connected to the database...')
+})
+
+// var testSchema = mongoose.Schema({
+//   name: String
+// });
+
+// mongoose.model('Test', testSchema); 
+
+module.exports = db;
 
 
