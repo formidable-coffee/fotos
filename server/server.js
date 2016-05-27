@@ -8,7 +8,9 @@ var requestHandler = require('./server_helpers/request-handler');
 app.use(helpers.logger);
 app.use(express.static(__dirname + '/../public')); 
 
-app.get('/signin', function(req, res) { res.render('index')}); 
+app.get('/', requestHandler.main.get);
+
+app.get('/signin', requestHandler.signin.get);  
 app.post('/signin', requestHandler.signin.post);
 
 app.get('/create', requestHandler.create.get);
