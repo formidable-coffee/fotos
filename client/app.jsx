@@ -19,7 +19,7 @@ class Main extends React.Component {
 	render () {
 		return (
 			<div>
-				<h1> Formidable Fotos </h1>
+				<h1>Formidable Fotos</h1>
 				<Button bsStyle="danger" bsSize="large">Sign In</Button>
 			</div>
 		); 
