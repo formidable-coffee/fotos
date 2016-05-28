@@ -25,10 +25,6 @@ class Main extends React.Component {
 	}
 	
 	submitHandler (startDate, endDate, options) {
-		this.submitHandler.bind(this); 
-	}
-	
-	submitHandler (startDate, endDate, options) {
 		$.post({
 			url: '/create',
 			data: {
