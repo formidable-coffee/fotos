@@ -6,7 +6,6 @@ import {Arc} from './arc'
 
 var Feed = (props) => (
   <div className="feed">
-    i am the feed
     <Arc photoArc={props.arcs} />
   </div>
 );

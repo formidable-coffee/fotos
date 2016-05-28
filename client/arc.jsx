@@ -6,8 +6,6 @@ console.log('should be a function: ', Lightbox);
 class Arc extends React.Component {
   constructor(props) {
     super(props);
-    console.log('props.photoArc', this.props.photoArc);
-    console.log('props.photoArc mapped', this.props.photoArc.map(photo => photo.src));
 
     this.state = {
       lightboxIsOpen: false,
