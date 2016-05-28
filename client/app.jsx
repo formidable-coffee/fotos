@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
+<<<<<<< HEAD
 import Form from './form';
 import Nav from './nav';
+=======
+import Form from './form'
+import { Button } from 'react-bootstrap';
+>>>>>>> c33e32cec5840a37153250d8e0a7e30c543e5e9a
 
 import { Button } from 'react-bootstrap';
 import $ from 'jquery'; 
@@ -25,6 +30,11 @@ class Main extends React.Component {
 	}
 	
 	submitHandler (startDate, endDate, options) {
+		this.submitHandler.bind(this); 
+	}
+	
+	submitHandler (startDate, endDate, options) {
+		console.log("This works", startDate, endDate, options); 
 		$.post({
 			url: '/create',
 			data: {
