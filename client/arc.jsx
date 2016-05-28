@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
 import Lightbox from 'react-images';
-console.log('should be a function: ', Lightbox);
+
 
 class Arc extends React.Component {
   constructor(props) {
