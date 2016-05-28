@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
-import Form from './form'
-import { Button } from 'react-bootstrap';
+import Form from './form';
+import Nav from './nav';
 
+import { Button } from 'react-bootstrap';
+import $ from 'jquery'; 
 
 var sampleData = [{
 	url:"http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
@@ -19,11 +21,10 @@ var sampleData = [{
 class Main extends React.Component {
 	constructor (props) {
 		super(props);
-		this.submitHandler.bind(this); 
+		this.submitHandler = this.submitHandler.bind(this); 
 	}
 	
 	submitHandler (startDate, endDate, options) {
-		console.log("This works", startDate, endDate, options); 
 		$.post({
 			url: '/create',
 			data: {
@@ -31,7 +32,7 @@ class Main extends React.Component {
 				endDate: endDate,
 				options: options
 			},
-			sucess: function() {
+			success: function() {
 				console.log('success'); 
 			}
 		})
@@ -40,9 +41,12 @@ class Main extends React.Component {
 	render () {
 		return (
 			<div>
+				<header>
+					<Nav />
+				</header>
 				<h1>Formidable Fotos</h1>
 				<Button bsStyle="danger" bsSize="large">Sign In</Button>
-				<Form onSubmit={this.submitHandler} />
+				<Form createNew={this.submitHandler} />
 			</div>
 		); 
 	}
