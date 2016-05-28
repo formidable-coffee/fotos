@@ -10,13 +10,13 @@ exports.logger = function(req, res, next) {
   next();
 };
 
-exports.getAll = function(req, res) {
-  testModel.find({})
-  .then(function(results){
-    res.json(results);
-  })
-  .catch(function(err) {
-    console.log(err);
-    res.send('404');
-  })
-};
+// exports.getAll = function(req, res) {
+//   testModel.find({})
+//   .then(function(results){
+//     res.json(results);
+//   })
+//   .catch(function(err) {
+//     console.log(err);
+//     res.send('404');
+//   })
+// };
