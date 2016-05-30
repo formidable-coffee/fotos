@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'; 
 import Form from './form';
 import Nav from './nav';
+import Login from './login'; 
 
 import { Button } from 'react-bootstrap';
 import $ from 'jquery'; 
@@ -45,7 +46,7 @@ class Main extends React.Component {
 					<Nav />
 				</header>
 				<h1>Formidable Fotos</h1>
-				<Button bsStyle="danger" bsSize="large">Sign In</Button>
+				<Login />
 				<Form createNew={this.submitHandler} />
 			</div>
 		); 
