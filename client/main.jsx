@@ -1,5 +1,4 @@
 import React from 'react';
-import Form from './form';
 import Nav from './nav';
 import { Button } from 'react-bootstrap';
 import Feed from './feed';
@@ -48,7 +47,11 @@ class Main extends React.Component {
           <Nav />
         </header>
         <h1>Formidable Fotos    Main - This should hopefully work! :)</h1>
-        <Feed arcs={sampleData} />
+        
+        {this.props.children}
+
+        <Feed arcs={sampleData}/>
+      
       </div>
     ); 
   }
