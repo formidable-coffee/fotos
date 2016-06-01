@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; 
-import {Arc} from './arc'
+import Arc from './arc'
 
 // expecting to be passed an array of urls in props
 
@@ -16,4 +16,4 @@ Feed.propTypes = {
   arcs: React.PropTypes.array.isRequired
 };
 
-export {Feed};
+export default Feed;
