@@ -31,8 +31,9 @@ render((
 	<Router history={hashHistory}>
     <Route path='/' component={Login}/>
     <Route path='/login' component={Login}/>
-    <Route path='/user' component={Main}>
+    <Route component={Main}>
     	<Route path='create' component={Form}/>
+    	<Route path='dashboard' component={Feed}/>
     </Route>
   </Router>
   ), document.getElementsByClassName('signIn')[0]);
