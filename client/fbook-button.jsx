@@ -1,5 +1,6 @@
 import React from 'react'; 
 import $ from 'jquery'; 
+import { browserHistory } from 'react-router';
 
 
 class FacebookButton extends React.Component {
@@ -56,6 +57,7 @@ class FacebookButton extends React.Component {
               console.log(response); 
               $.post('/user', {name: response, accessToken: response}); 
             })
+            // probably going to to do the browserHistory.push('path') here
           } else {
             console.log('user did not fully authenticate'); 
           }
