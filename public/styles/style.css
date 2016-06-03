@@ -3,5 +3,43 @@
     width: 100%;
 }
 
-button {
+.login-wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
+
+.login-container {
+  display:flex;
+  height: 400px;
+  width: 50%;
+  flex-direction:column;
+  background-color: rgba(10,10,10,0.6);
+  justify-content:center;
+  border-style: solid;
+  border-color: lightblue;
+  border-width: 15px;
+}
+
+.login-title {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  text-align: center;
+  color: white;
+}
+
+.login-button {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+html { 
+    background: url(../scrapbook.jpg) no-repeat center center fixed; 
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
