@@ -10,8 +10,16 @@ var knex = require('knex')({
   }
 });
 
-var db = require('bookshelf')(knex);
+/**
+* Must first have an open connection to mysql AND have a database in mysql already created
+* 1. mysql -u root -p (no password here?)
+* 2. create database fotos; (https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial)
+* 3. use fotos;
+* 4. To enable user accout and password access, must first create user (http://dev.mysql.com/doc/refman/5.7/en/adding-users.html)
+*/
 
+var db = require('bookshelf')(knex);
+db.plugin('registry'); // resolves circular dependencies
 /************************************************************/
 // Schemas for all tables used
 /************************************************************/
