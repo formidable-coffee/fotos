@@ -1,12 +1,12 @@
 var db = require('../config.js');
-var Arc = require('arc.js');
+require('./arc');
 
 var User = db.Model.extend({
   tableName: 'users',
 
   arcs: function () {
-    return this.hasMany(Arc);
+    return this.hasMany('Arc');
   }
 });
 
-module.exports = User;
+module.exports = db.model('User', User);

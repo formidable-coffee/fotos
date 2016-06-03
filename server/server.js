@@ -4,12 +4,12 @@ var helpers = require('./server_helpers/middleware');
 var requestHandler = require('./server_helpers/request-handler'); 
 
 var db = require('./db/config.js');
-var Users = require('./db/collections/users.js');
-var User = require('./db/models/user.js');
-var Arcs = require('./db/collections/arcs.js');
-var Arc = require('./db/models/arc.js');
-var Images = require('./db/collections/images.js');
 var Image = require('./db/models/image.js');
+var Images = require('./db/collections/images.js');
+var Arc = require('./db/models/arc.js');
+var Arcs = require('./db/collections/arcs.js');
+var User = require('./db/models/user.js');
+var Users = require('./db/collections/users.js');
 
 var app = express();
 
