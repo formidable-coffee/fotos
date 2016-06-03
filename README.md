@@ -25,7 +25,7 @@ https://waffle.io/formidable-coffee/fotos
     mysql> CREATE USER 'admin'@'localhost' IDENTIFIED BY 'formidable';
     mysql> GRANT ALL PRIVILEGES ON fotos.* TO 'admin'@'localhost';
     ```
-  To see privileges on the account you've just created:
+To see privileges on the account you've just created:
 
     ```
     mysql> SHOW GRANTS FOR 'admin'@'localhost';
