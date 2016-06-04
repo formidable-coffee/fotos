@@ -21,12 +21,51 @@ var Users = require('./server/db/collections/users.js');
 var data = require('./data.json');
 
 // 2. Drop old data
-
+Users.reset()
+  .query({where: {username: data.username}})
+  .fetch()
+  .then(function (allUsers) {
+    if (allUsers.length > 0) {
+      console.log('This username, ' + data.username + ' already exists in the database');
+      return;
+    } else {
 // 3. Add data from data.json
-// console.log(Users.create);
-Users.create({
-  name: data.name,
-  username: data.username
-}).then(function (newUser) {
-  console.log("A new user has been added: ", newUser);
-});
+      var user = new User({
+        name: data.name,
+        username: data.username
+      }).save().then(function (newUser) {
+        console.log("A new user has been added => ", newUser);
+      });
+
+      User.forge({username: data.username})
+        .fetch()
+        .then(function (userMatched) {
+          // create new Arc
+          var arc = new Arc({
+            name: data.arcName
+          });
+
+          // attach foreign key in arc
+          return arc.save({user_id: userMatched.id});
+        })
+        .then(function (newArc) {
+          console.log("A new arc has been added =>", newArc);
+
+          for (var i = 0; i < data.url.length; i++) {
+            // create new image
+            var image = new Image({
+              url: data.url[i]
+            });
+
+            // attach foreign key in image
+            image.save({arc_id: newArc.id});
+            console.log("A new img has been added => ", image);
+          };
+        });   
+    }
+  });
+
+
+
+// collections are merely used as temp storage for many rows of data
+  // should be periodically reset with collection.reset()
