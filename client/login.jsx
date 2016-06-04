@@ -2,7 +2,7 @@ import React from 'react';
 import FacebookButton from './fbook-button'; 
 
 var Login = () => (
-  <div>
+  <div id="background">
     <div className="login-wrapper">
       <div className="login-container">
         <div className ="login-title">
@@ -13,10 +13,8 @@ var Login = () => (
           <FacebookButton />
         </div>
       </div>
-      <div className="test">
-      </div>
     </div>
-    </div>
+  </div>
 
 ); 
 

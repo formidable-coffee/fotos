@@ -35,11 +35,15 @@
   margin-bottom: 30px;
 }
 
-html { 
+#background { 
     background: url(../scrapbook.jpg) no-repeat center center fixed; 
     -o-background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
+/*    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;*/
 }
 
