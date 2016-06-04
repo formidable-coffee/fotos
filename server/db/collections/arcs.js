@@ -1,8 +1,8 @@
 var db = require('../config.js');
-require('../models/arc.js');
+var Arc = require('../models/arc.js');
 
 var Arcs = new db.Collection();
 
-Arcs.model = 'Arc';
+Arcs.model = Arc;
 
 module.exports = Arcs;

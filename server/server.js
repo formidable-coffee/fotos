@@ -11,11 +11,11 @@ var db = require('./db/config.js');
 * Collections represents the table itself
 */
 var Image = require('./db/models/image.js');
-// var Images = require('./db/collections/images.js');
+var Images = require('./db/collections/images.js');
 var Arc = require('./db/models/arc.js');
-// var Arcs = require('./db/collections/arcs.js');
+var Arcs = require('./db/collections/arcs.js');
 var User = require('./db/models/user.js');
-// var Users = require('./db/collections/users.js');
+var Users = require('./db/collections/users.js');
 
 var app = express();
 
