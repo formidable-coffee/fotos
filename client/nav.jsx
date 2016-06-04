@@ -3,6 +3,7 @@ import ReactBootstrap from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { NavItem } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 var topNav = (props) => (
 	<Navbar>
@@ -15,8 +16,8 @@ var topNav = (props) => (
 		</Navbar.Header>
 		
 		<Nav>
-			<NavItem>Create</NavItem>
-			<NavItem>Feed</NavItem>
+			<NavItem><Link to="/create" activeStyle={{ color: 'green' }}>Create</Link></NavItem>
+			<NavItem><Link to="/dashboard" activeStyle={{ color: 'green' }}>Feed</Link></NavItem>
 			<NavItem>Logout</NavItem>
 		</Nav>
  </Navbar>

@@ -47,10 +47,12 @@ class Arc extends React.Component {
     this.gotoNext();
   }
 
-
+  
   renderGallery () {
     if (!this.props.photoArc) return;
     const gallery = this.props.photoArc.map((obj, i) => {
+      console.log('styles.thumbnail.width is: ', styles.thumbnail.width);
+      console.log('styles.thumbnail is: ', styles.thumbnail);
       return (
         <a
           href={obj.src}
@@ -59,10 +61,11 @@ class Arc extends React.Component {
           style={styles.thumbnail}
           >
           <img
-            height={styles.thumbnail.size}
+            height={styles.thumbnail.height}
+
             src={obj.thumbnail}
             style={styles.thumbnailImage}
-            width={styles.thumbnail.size}
+            width={styles.thumbnail.width}
           />
         </a>
       );
@@ -133,5 +136,4 @@ const styles = {
 };
 
 
-
-export {Arc};
+export default Arc;

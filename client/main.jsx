@@ -1,13 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom'; 
-import { Router, Route, hashHistory } from 'react-router';
-
-import Login from './login'; 
-import Main from './main';
+import Nav from './nav';
+import { Button } from 'react-bootstrap';
 import Feed from './feed';
-import Form from './form';
-// import { Button } from 'react-bootstrap';
-// import $ from 'jquery'; 
 
 var sampleData = [{
   thumbnail:"http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
@@ -26,15 +20,41 @@ var sampleData = [{
   src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
 }];
 
+class Main extends React.Component {
+  constructor (props) {
+    super(props);
+    this.submitHandler = this.submitHandler.bind(this); 
+  }
+  
+  submitHandler (startDate, endDate, options) {
+    $.post({
+      url: '/create',
+      data: {
+        startDate: startDate,
+        endDate: endDate,
+        options: options
+      },
+      success: function() {
+        console.log('success'); 
+      }
+    })
+  }
 
-render((  
-	<Router history={hashHistory}>
-    <Route path='/' component={Login}/>
-    <Route path='/login' component={Login}/>
-    <Route component={Main}>
-    	<Route path='create' component={Form}/>
-    	<Route path='dashboard' component={Feed}/>
-    </Route>
-  </Router>
-  ), document.getElementsByClassName('signIn')[0]);
+  render () {
+    return (
+      <div>
+        <header>
+          <Nav />
+        </header>
+        <h1>Formidable Fotos    Main - This should hopefully work! :)</h1>
+        
+        {this.props.children}
 
+        <Feed arcs={sampleData}/>
+      
+      </div>
+    ); 
+  }
+}; 
+
+export default Main;

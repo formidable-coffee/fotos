@@ -22,12 +22,14 @@
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.4.5",
+    "jquery": "^2.2.4",
     "mongoose": "^4.1.0",
     "path": "^0.12.7",
     "react": "^15.1.0",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^15.1.0",
-    "react-images": "^0.4.6"
+    "react-images": "^0.4.6",
+    "react-router": "^2.4.1"
   },
   "babel": {
     "presets": [
