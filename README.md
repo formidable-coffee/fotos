@@ -43,3 +43,11 @@ Or
     $ node server/server.js
     ```
 2. Your server is now live at http://localhost:4000
+
+# Seed database with example data
+
+1. Run the seed.js file from the terminal from the root directory:
+
+    ```
+    $ node seed.js
+    ```

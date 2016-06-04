@@ -19,6 +19,7 @@ var Users = require('./db/collections/users.js');
 
 var app = express();
 
+var port = 4000;
 app.use(bodyParser.json());
 app.use(helpers.logger);
 app.use(express.static(__dirname + '/../public')); 
@@ -31,6 +32,6 @@ app.post('/signin', requestHandler.signin.post);
 app.get('/create', requestHandler.create.get);
 app.post('/create', requestHandler.create.post); 
 
-app.listen(4000, function () {
-  console.log('Example app listening on port 4000!');
+app.listen(port, function () {
+  console.log('Example app listening on port: ', + port + '!');
 });
