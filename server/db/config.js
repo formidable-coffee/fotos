@@ -7,7 +7,8 @@ var knex = require('knex')({
     password : 'formidable',
     database : 'fotos',
     charset  : 'UTF8'
-  }
+  },
+  useNullAsDefault: true
 });
 
 
@@ -41,7 +42,7 @@ db.knex.schema.hasTable('arcs').then(function (exists) {
       arc.string('criteria', 255);
       arc.date('query_start_date');
       arc.date('query_end_date');
-      arc.integer('user_id').references('users.id');
+      arc.integer('user_id').unsigned().references('users.id'); // unsigned() is NECESSARY in mysql
     }).then(function (table) {
       console.log('Created Table', table);
     });
@@ -57,7 +58,7 @@ db.knex.schema.hasTable('images').then(function (exists) {
       image.integer('width');
       image.string('url', 255);
       // could also potentially use table here so that 1 image can be in more than 1 arc
-      image.integer('arc_id').references('arcs.id');
+      image.integer('arc_id').unsigned().references('arcs.id');
     }).then(function (table) {
       console.log('Created Table', table);
     });

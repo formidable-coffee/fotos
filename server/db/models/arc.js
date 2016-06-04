@@ -7,11 +7,11 @@ var Arc = db.Model.extend({
   hasTimestamps: true,
 
   user: function () {
-    return this.belongsTo('User');
+    return this.belongsTo('User', 'user_id');
   },
 
   images: function () {
-    return this.hasMany('Image');
+    return this.hasMany('Image', 'arc_id');
   }
 });
 
