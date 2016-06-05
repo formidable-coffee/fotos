@@ -1,6 +1,6 @@
 import React from 'react'; 
 import $ from 'jquery'; 
-import { browserHistory, Router } from 'react-router';
+import { hashHistory } from 'react-router';
 
 
 class FacebookButton extends React.Component {
@@ -47,7 +47,7 @@ class FacebookButton extends React.Component {
               self.setState({authenticated: true});
               $.post('/signin', response).done(function(data) {
                 console.log('sucessfully sent post request for user');
-                Router.transitionTo('dashboard'); // Transition not working
+                hashHistory.push('dashboard'); // Transition not working
               }).fail(function(err) {
                 console.log(err, 'error in checkLoginState'); 
               }); 
