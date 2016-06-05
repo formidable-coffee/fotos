@@ -36,5 +36,5 @@ render((
     	<Route path='dashboard' component={Feed}/>
     </Route>
   </Router>
-  ), document.getElementsByClassName('signIn')[0]);
+  ), document.getElementsByClassName('mounting')[0]);
 
