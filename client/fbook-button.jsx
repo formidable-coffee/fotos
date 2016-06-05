@@ -1,6 +1,6 @@
 import React from 'react'; 
 import $ from 'jquery'; 
-import { browserHistory } from 'react-router';
+import { browserHistory, Router } from 'react-router';
 
 
 class FacebookButton extends React.Component {
@@ -46,7 +46,8 @@ class FacebookButton extends React.Component {
             FB.api('/me', function(response) {
               self.setState({authenticated: true});
               $.post('/signin', response).done(function(data) {
-                console.log('sucessfully sent post request for user'); 
+                console.log('sucessfully sent post request for user');
+                Router.transitionTo('dashboard'); // Transition not working
               }).fail(function(err) {
                 console.log(err, 'error in checkLoginState'); 
               }); 
@@ -69,7 +70,6 @@ class FacebookButton extends React.Component {
 
   handleClick (e) {
     e.preventDefault(); 
-    console.log('handleClick', this.state.authenticated); 
     if (this.state.authenticated) {
       this.logout(); 
     } else {

@@ -17,17 +17,10 @@ module.exports.signin = {
 
 	post: function (req, res) {
 		console.log('post request', req.body); 
-		new User({name: req.body.name, id: req.body.id}).save().then(function(data){
-			console.log('user should have saved',data); 
-		})
-		// db.query(`INSERT INTO users (name) VALUES ('${req.body.name}', '${req.body.id}');`, function (err, data) {
-		// 	if (err) {
-		// 		console.log(err, 'error in query'); 
-		// 	} else {
-		// 		res.sendStatus(200); 
-		// 		console.log('user found'); 
-		// 	}
-		// })
+		new User({name: req.body.name, access_token: req.body.id}).save().then(function(data){
+			console.log('user should have saved', data); 
+			res.redirect('/create'); // How do you redirect to React path? 
+		});
 	}
 }; 
 
