@@ -21,6 +21,7 @@ var app = express();
 
 var port = 4000;
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false })); // Fixes 404 errors for empty response body
 app.use(helpers.logger);
 app.use(express.static(__dirname + '/../public')); 
 
@@ -28,6 +29,9 @@ app.get('/', requestHandler.main.get);
 
 app.get('/signin', requestHandler.signin.get);  
 app.post('/signin', requestHandler.signin.post);
+
+app.get('/signin', function() {console.log('get request');  });  
+app.post('/signin', function() {console.log('post request'); });
 
 app.get('/create', requestHandler.create.get);
 app.post('/create', requestHandler.create.post); 

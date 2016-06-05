@@ -45,14 +45,12 @@ class FacebookButton extends React.Component {
           if (response.authResponse) {
             FB.api('/me', function(response) {
               self.setState({authenticated: true});
-              console.log(response); 
-              $.post('/signin', {name: response, accessToken: response}).done(function(data) {
-                console.log(data); 
+              $.post('/signin', response).done(function(data) {
+                console.log('sucessfully sent post request for user'); 
               }).fail(function(err) {
                 console.log(err, 'error in checkLoginState'); 
               }); 
             }); 
-            // probably going to to do the browserHistory.push('path') here
           } else {
             console.log('user did not fully authenticate'); 
           }

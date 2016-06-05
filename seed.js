@@ -22,17 +22,17 @@ var data = require('./data.json');
 
 // 2. Drop old data
 Users.reset()
-  .query({where: {username: data.username}})
+  .query({where: {name: data.name}})
   .fetch()
   .then(function (allUsers) {
     if (allUsers.length > 0) {
-      console.log('This username, ' + data.username + ' already exists in the database');
+      console.log('This username, ' + data.name + ' already exists in the database');
       return;
     } else {
 // 3. Add data from data.json
       var user = new User({
         name: data.name,
-        username: data.username
+        token: data.access_token
       }).save().then(function (newUser) {
         console.log("A new user has been added => ", newUser);
       });
