@@ -1,5 +1,7 @@
 var bodyParser = require('body-parser');
-var path = require('path')
+var path = require('path'); 
+var User = require('../db/models/user');
+var bluebird = require('bluebird'); 
 
 module.exports.main = {
 	get: function (req, res) {
@@ -9,11 +11,15 @@ module.exports.main = {
 
 module.exports.signin = {
 	get: function (req, res) {
-		res.sendFile(path.normalize(__dirname + '/../../public/sign-in.html')); 
+		res.sendFile(path.normalize(__dirname + '/../../public/index.html')); 
 	}, 
 
 	post: function (req, res) {
-		res.redirect('/'); 
+		console.log('post request', req.body); 
+		new User({name: req.body.name, access_token: req.body.id}).save().then(function(data){
+			console.log('user should have saved', data); 
+			res.redirect('/create'); // How do you redirect to React path? 
+		});
 	}
 }; 
 

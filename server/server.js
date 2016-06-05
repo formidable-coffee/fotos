@@ -21,6 +21,7 @@ var app = express();
 
 var port = 4000;
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false })); // Fixes 404 errors for empty response body
 app.use(helpers.logger);
 app.use(express.static(__dirname + '/../public')); 
 
