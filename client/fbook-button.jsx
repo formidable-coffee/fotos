@@ -12,22 +12,13 @@ class FacebookButton extends React.Component {
     }
 
     this.handleClick = this.handleClick.bind(this)
-    // this.onStatusChange = this.onStatusChange.bind(this);
-    // this.checkLoginState = this.checkLoginState.bind(this);
   }
 
-  // componentDidMount() {
-  //   // this.FB.Event.subscribe('auth.logout', 
-  //   //   this.onLogout.bind(this)); 
-  //   // this.FB.Event.subscribe('auth.statusChange', 
-  //   //   this.onStatusChange.bind(this)); 
-  // }
   componentDidMount () {
     var self = this; 
-    console.log('component did componentDidMount'); 
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '477241942472397',
+        appId      : '1171407722880061',
         xfbml      : true,
         version    : 'v2.6'
       });
@@ -55,8 +46,12 @@ class FacebookButton extends React.Component {
             FB.api('/me', function(response) {
               self.setState({authenticated: true});
               console.log(response); 
-              $.post('/user', {name: response, accessToken: response}); 
-            })
+              $.post('/signin', {name: response, accessToken: response}).done(function(data) {
+                console.log(data); 
+              }).fail(function(err) {
+                console.log(err, 'error in checkLoginState'); 
+              }); 
+            }); 
             // probably going to to do the browserHistory.push('path') here
           } else {
             console.log('user did not fully authenticate'); 
