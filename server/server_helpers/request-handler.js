@@ -11,7 +11,6 @@ module.exports.main = {
 
 module.exports.signin = {
 	get: function (req, res) {
-		console.log('got here? '); 
 		res.sendFile(path.normalize(__dirname + '/../../public/index.html')); 
 	}, 
 

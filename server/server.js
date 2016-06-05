@@ -30,9 +30,6 @@ app.get('/', requestHandler.main.get);
 app.get('/signin', requestHandler.signin.get);  
 app.post('/signin', requestHandler.signin.post);
 
-app.get('/signin', function() {console.log('get request');  });  
-app.post('/signin', function() {console.log('post request'); });
-
 app.get('/create', requestHandler.create.get);
 app.post('/create', requestHandler.create.post); 
 
