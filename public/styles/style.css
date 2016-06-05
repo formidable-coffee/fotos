@@ -35,15 +35,14 @@
   margin-bottom: 30px;
 }
 
+
 #background { 
     background: url(../scrapbook.jpg) no-repeat center center fixed; 
     -o-background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-/*    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;*/
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+99 */
+
 }
 
