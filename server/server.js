@@ -36,5 +36,5 @@ app.post('/create', requestHandler.create.post);
 app.get('/dashboard', requestHandler.dashboard.get); 
 
 app.listen(port, function () {
-  console.log('Example app listening on port: ', + port + '!');
+  console.log('Listening on port:', port, '!');
 });

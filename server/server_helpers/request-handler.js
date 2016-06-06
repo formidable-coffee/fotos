@@ -29,6 +29,7 @@ module.exports.signin = {
 		  .fetch()
 		  .then(function (allUsers) {
 		    if (allUsers.length > 0) {
+		    	// this needs to update database and not just console log
 		      console.log('This username, ' + req.body.userId + ' already exists in the database');
 				} else {
 					new User({name: req.body.name, fbId: req.body.userId, access_token: req.body.access_token})
@@ -50,7 +51,16 @@ module.exports.create = {
 	}, 
 
 	post: function (req, res) {
-		res.send('success'); 
+		// store obj from fb api calls into db
+		var userID = res.body.id;
+		var imgUrl = res.body.photos.data;
+			// user has already been created
+				// make new arc
+				var newArc = new Arc({
+
+				})
+				// store img into new arc
+		// res.send('success'); 
 	}
 }
 
