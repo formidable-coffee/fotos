@@ -40,21 +40,7 @@ class Form extends React.Component {
           console.log('success'); 
         }
       });
-    })
-    // FB.api('/me/photos', {since: startDate, until: endDate}, function (response) {
-    //   console.log(response); 
-    //   $.post({
-    //     url: '/create',
-    //     data: {
-    //       startDate: startDate,
-    //       endDate: endDate,
-    //       // options: options
-    //     },
-    //     success: function() {
-    //       console.log('success'); 
-    //     }
-    //   });
-    // })
+    }); 
   }
 
 	handleSubmit (e) {
