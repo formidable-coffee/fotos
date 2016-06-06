@@ -8,8 +8,8 @@ var User = require('../db/models/user');
 var Arc = require('../db/models/arc'); 
 var Arcs = require('../db/collections/arcs'); 
 
-var Image = require('./server/db/models/image.js');
-var Images = require('./server/db/collections/images.js');
+var Image = require('../db/models/image.js');
+var Images = require('../db/collections/images.js');
 
 var limit = 5;
 
@@ -70,9 +70,10 @@ module.exports.create = {
 
   post: function (req, res) {
     // store obj from fb api calls into db
-    var imgUrl = minimizeArr(res.body.data, limit);
+    console.log("post request from client", req.body);
+    var imgUrl = minimizeArr(req.body.photos.data, limit);
       // user has already been created
-        User.forge({fbId: res.body.id})
+        User.forge({fbId: req.body.id})
           .fetch()
           .then(function (userMatched) {
             // make new arc
@@ -87,8 +88,9 @@ module.exports.create = {
           // store img into new arc
             for (var imgId = 0; imgId < imgUrl.length; imgId++) {
               var imgSizeArr = imgUrl[imgId].images;
-              for (var imgSize = 0; imgSize < imgSizeArr.length; imgSize++) {
-                var img = imgSizeArr[imgSize];
+              // for (var imgSize = 0; imgSize < imgSizeArr.length; imgSize++) {
+                // var img = imgSizeArr[imgSize];
+                var img = imgSizeArr[0];
                 var image = new Image({
                   height: img.height,
                   width: img.width,
@@ -97,9 +99,9 @@ module.exports.create = {
 
                 image.save({arc_id: newArc.id});
                 console.log("A new img has been added => ", image);
-              }
+              // }
             }
-          })
+          });
     // res.send('success'); 
   }
 }
