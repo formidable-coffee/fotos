@@ -1,4 +1,6 @@
 import React from 'react';
+import $ from 'jquery'; 
+import { hashHistory } from 'react-router';
 
 class Form extends React.Component {
 	constructor(props) {
@@ -10,12 +12,29 @@ class Form extends React.Component {
 		}
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.dropdownSelect = this.dropdownSelect.bind(this);
-
+    this.submitHandler = this.submitHandler.bind(this); 
 	}
+  
+  submitHandler (startDate, endDate, options) {
+    $.post({
+      url: '/create',
+      data: {
+        startDate: startDate,
+        endDate: endDate,
+        // options: options
+      },
+      success: function() {
+        console.log('success'); 
+      }
+    });
+  }
 
 	handleSubmit (e) {
 		e.preventDefault();
-		this.props.createNew(this.state.startDate, this.state.endDate);
+		console.log("start is", this.state.startDate); 
+		console.log("end is", this.state.endDate); 
+
+		this.submitHandler(this.state.startDate, this.state.endDate);
 	}
 
 	dropdownSelect (e) {
@@ -28,12 +47,12 @@ class Form extends React.Component {
 				<form >
 					<input type="date" name="startDate" className="datePicker" onChange={(event)=> this.setState({startDate: event.target.value})} />
 					<input type="date" name="endDate" className="datePicker" onChange={(event)=> this.setState({endDate: event.target.value})} />
-					<select onChange={this.dropdownSelect}>
+				{/* <select onChange={this.dropdownSelect}>
 						<option></option>
 						<option value="filter1">Photos of me</option>
 						<option value="filter2"></option>
 						<option value="filter3">Photos in other countries</option>
-					</select>
+					</select> */} 
 					<button type="submit" onClick={this.handleSubmit}>See your photos</button>
 				</form>
 			</div>

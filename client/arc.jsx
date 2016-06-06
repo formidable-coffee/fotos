@@ -51,8 +51,6 @@ class Arc extends React.Component {
   renderGallery () {
     if (!this.props.photoArc) return;
     const gallery = this.props.photoArc.map((obj, i) => {
-      console.log('styles.thumbnail.width is: ', styles.thumbnail.width);
-      console.log('styles.thumbnail is: ', styles.thumbnail);
       return (
         <a
           href={obj.src}
@@ -61,18 +59,17 @@ class Arc extends React.Component {
           style={styles.thumbnail}
           >
           <img
-            height={styles.thumbnail.height}
-
+            height={styles.thumbnail.size}
             src={obj.thumbnail}
             style={styles.thumbnailImage}
-            width={styles.thumbnail.width}
+            width={styles.thumbnail.size}
           />
         </a>
       );
     });
 
     return (
-      <div style={styles.gallery}>
+      <div className="section" style={styles.gallery}>
         {gallery}
       </div>
     );
@@ -80,8 +77,8 @@ class Arc extends React.Component {
   
     render () {
       return (
-        <div className="section">
-          {this.renderGallery()}
+        <div style={styles.container}>
+            {this.renderGallery()}
           <Lightbox
             currentImage={this.state.currentImage}
             images={this.props.photoArc}
@@ -103,12 +100,18 @@ Arc.propTypes = {
   photoArc: React.PropTypes.array.isRequired
 };
 
-const THUMBNAIL_SIZE = 72;
+const THUMBNAIL_SIZE = 80;
 
 const styles = {
+  container: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   gallery: {
-    marginLeft: -5,
-    marginRight: -5,
+    marginLeft: 0,
+    marginRight: 0,
     overflow: 'hidden',
   },
   thumbnail: {
@@ -124,7 +127,7 @@ const styles = {
     display: 'block',
     height: 'auto',
     maxWidth: '100%',
-    // height: THUMBNAIL_SIZE,
+    height: THUMBNAIL_SIZE
     // left: '50%',
     // position: 'relative',
     //

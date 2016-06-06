@@ -1,6 +1,33 @@
+.navbar{
+  height: 70px;
+}
+
+.links, .logout {
+  margin-top: 20px;
+}
+
+.links {
+  font-size: 30px;
+  color: white;
+}
+
+.page-title {
+  margin-top: 70px;
+  position: absolute;
+  left: 500px;
+}
+
+.active {
+  background-color:rgba(0,0,255,0.2)
+}
+
 .signIn {
     height: 100%;
     width: 100%;
+}
+
+.text {
+  color: #D0D0D0;
 }
 
 .login-wrapper {
@@ -35,15 +62,46 @@
   margin-bottom: 30px;
 }
 
+
 #background { 
     background: url(../scrapbook.jpg) no-repeat center center fixed; 
     -o-background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
-/*    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;*/
+
+}
+
+.gallery-container {
+  height: 600px;
+  width: 70%; 
+  background: black;
+  position: relative;
+  top: 150px;
+  left: 200px;
+  display: flex;
+  overflow:auto;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid gray; 
+  flex-direction: column;
+}
+
+.section {
+  flex-basis: auto;
+  margin-top: 50px;
+  height: 150px;
+  width: 80%;
+  border: 3px solid gray;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.section a, .section img {
+/*  border: 5px solid blue;
+*/  
 }
 
