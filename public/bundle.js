@@ -37140,7 +37140,11 @@
 				_react2.default.createElement(
 					_reactBootstrap.NavItem,
 					{ className: 'logout' },
-					'Logout'
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/login' },
+						'Logout'
+					)
 				)
 			)
 		);

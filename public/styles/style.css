@@ -79,15 +79,16 @@
   position: relative;
   top: 150px;
   left: 200px;
-  display: flex;
+  /*display: flex;*/
   overflow:auto;
-  justify-content: flex-start;
-  align-items: center;
+  /*justify-content: flex-start;*/
+  /*align-items: center;*/
   border: 2px solid gray; 
-  flex-direction: column;
+  /*flex-direction: column;*/
 }
 
 .section {
+  margin: 0 auto;
   flex-basis: auto;
   margin-top: 50px;
   height: 150px;

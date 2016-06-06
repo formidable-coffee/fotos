@@ -13,7 +13,7 @@ var topNav = (props) => (
 			<NavItem style={linkStyle}><Link to="/create" activeClassName="active" style={linkStyle}>Create new story</Link></NavItem>
 		</Nav>
 		<Nav pullRight>
-			<NavItem className="logout">Logout</NavItem>
+			<NavItem className="logout"><Link to="/login">Logout</Link></NavItem>
 		</Nav>
  </Navbar>
 );
