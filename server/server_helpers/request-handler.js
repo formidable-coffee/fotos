@@ -8,6 +8,8 @@ var Arc = require('../db/models/arc');
 var Arcs = require('../db/collections/arcs'); 
 
 var bluebird = require('bluebird'); 
+var url = require('url');
+
 
 module.exports.main = {
 	get: function (req, res) {
@@ -53,9 +55,15 @@ module.exports.create = {
 }
 
 module.exports.dashboard = {
-	get: function (req, res) {
-		new Arc({token: '124'}).fetch({withRelated:['user', 'photos']}).then(function(data) {
-			console.log("IN GET REQUEST TO DB", data); 
-		}); 
+	// get: function (req, res) {
+	// 	new Arc({token: '124'}).fetch({withRelated:['user', 'photos']}).then(function(data) {
+	// 		console.log("IN GET REQUEST TO DB", data); 
+	// 	}); 
+	// }
+	get: function(req, res) {
+		var url_parts = url.parse(req.url, true);
+		var query = url_parts.query;
+		console.log('query is an object as: ', query);
+		res.send('success');
 	}
 }; 

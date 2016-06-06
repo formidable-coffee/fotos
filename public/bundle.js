@@ -25973,7 +25973,8 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FacebookButton).call(this, props));
 
 	    _this.state = {
-	      authenticated: false
+	      authenticated: false,
+	      userMessage: ""
 	    };
 
 	    _this.handleClick = _this.handleClick.bind(_this);
@@ -26014,18 +26015,22 @@
 	        } else {
 	          FB.login(function (response) {
 	            console.log(response, 'outside api call');
+	            var access_token = response.authResponse.accessToken;
 	            if (response.authResponse) {
 	              FB.api('/me', function (response) {
 	                self.setState({ authenticated: true });
-	                _jquery2.default.post('/signin', response).done(function (data) {
-	                  console.log('sucessfully sent post request for user');
-	                  _reactRouter.hashHistory.push('dashboard'); // Transition not working
+	                console.log('in api call', response);
+	                _jquery2.default.post('/signin', { name: response.name, userId: response.id, access_token: access_token }).done(function (data) {
+	                  console.log('success');
+	                  window.fbId = response.id;
+	                  window.access_token = access_token;
+	                  _reactRouter.hashHistory.push('dashboard');
 	                }).fail(function (err) {
 	                  console.log(err, 'error in checkLoginState');
 	                });
 	              });
 	            } else {
-	              console.log('user did not fully authenticate');
+	              console.log('user did not authenticate');
 	            }
 	          });
 	        }
@@ -26035,9 +26040,10 @@
 	    key: 'logout',
 	    value: function logout() {
 	      var self = this;
+	      console.log('is this working?');
 	      FB.logout(function (response) {
 	        self.setState({ authenticated: false });
-	        console.log;
+	        _reactRouter.hashHistory.push('/login');
 	      });
 	    }
 	  }, {
@@ -26060,8 +26066,7 @@
 	          'button',
 	          { onClick: this.handleClick },
 	          this.state.authenticated ? "Logout" : "Log in with Facebook"
-	        ),
-	        _react2.default.createElement('div', null)
+	        )
 	      );
 	    }
 	  }]);
@@ -55164,6 +55169,8 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -55176,42 +55183,138 @@
 
 	var _arc2 = _interopRequireDefault(_arc);
 
+	var _jquery = __webpack_require__(232);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	// expecting to be passed an array of urls in props
 
-	var Feed = function Feed(props) {
-	  var sampleData = [{
-	    thumbnail: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
-	    src: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg"
+	var Feed = function (_React$Component) {
+	  _inherits(Feed, _React$Component);
+
+	  function Feed(props) {
+	    _classCallCheck(this, Feed);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Feed).call(this, props));
+
+	    _this.state = {
+	      arcs: []
+	    };
+	    // this.componentDidMount.bind(this);
+	    // this.getData.bind(this);
+	    return _this;
+	  }
+
+	  _createClass(Feed, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getData();
+	    }
 	  }, {
-	    thumbnail: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg",
-	    src: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg"
+	    key: 'getData',
+	    value: function getData() {
+	      console.log(fbId);
+	      _jquery2.default.get('/dashboard', { user_id: fbId }, function (data) {
+	        this.setState({ arcs: data });
+	        console.log('state is: ', this.state.arcs);
+	      }.bind(this));
+	    }
 	  }, {
-	    thumbnail: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2",
-	    src: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2"
-	  }, {
-	    thumbnail: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg",
-	    src: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg"
-	  }, {
-	    thumbnail: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg",
-	    src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
-	  }];
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      'h2',
-	      { className: 'page-title' },
-	      'Your past stories'
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'gallery-container' },
-	      _react2.default.createElement(_arc2.default, { photoArc: sampleData })
-	    )
-	  );
-	};
+	    key: 'render',
+	    value: function render() {
+	      var sampleData = [[{
+	        thumbnail: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
+	        src: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg"
+	      }, {
+	        thumbnail: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg",
+	        src: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg"
+	      }, {
+	        thumbnail: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2",
+	        src: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2"
+	      }, {
+	        thumbnail: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg",
+	        src: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg"
+	      }, {
+	        thumbnail: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg",
+	        src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
+	      }], [{
+	        thumbnail: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
+	        src: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg"
+	      }, {
+	        thumbnail: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg",
+	        src: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg"
+	      }, {
+	        thumbnail: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2",
+	        src: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2"
+	      }, {
+	        thumbnail: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg",
+	        src: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg"
+	      }, {
+	        thumbnail: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg",
+	        src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
+	      }], [{
+	        thumbnail: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
+	        src: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg"
+	      }, {
+	        thumbnail: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg",
+	        src: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg"
+	      }, {
+	        thumbnail: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2",
+	        src: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2"
+	      }, {
+	        thumbnail: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg",
+	        src: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg"
+	      }, {
+	        thumbnail: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg",
+	        src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
+	      }], [{
+	        thumbnail: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
+	        src: "http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg"
+	      }, {
+	        thumbnail: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg",
+	        src: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg"
+	      }, {
+	        thumbnail: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2",
+	        src: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2"
+	      }, {
+	        thumbnail: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg",
+	        src: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg"
+	      }, {
+	        thumbnail: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg",
+	        src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
+	      }]];
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h2',
+	          { className: 'page-title' },
+	          'Your past stories'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'gallery-container' },
+	          sampleData.map(function (arc) {
+	            console.log(arc);
+	            return _react2.default.createElement(_arc2.default, { photoArc: arc });
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Feed;
+	}(_react2.default.Component);
+
+	;
 
 	// PropTypes tell other developers what `props` a component expects
 	// Warnings will be shown in the console when the defined rules are violated
