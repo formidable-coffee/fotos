@@ -7,7 +7,9 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress --inline"
+    "start": "webpack-dev-server --progress --inline",
+    "prod": "webpack --progress --colors --watch"
+
   },
   "repository": {
     "type": "git",
