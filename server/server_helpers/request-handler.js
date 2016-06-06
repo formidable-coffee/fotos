@@ -11,7 +11,7 @@ var Arcs = require('../db/collections/arcs');
 var Image = require('./server/db/models/image.js');
 var Images = require('./server/db/collections/images.js');
 
-var limit = 10;
+var limit = 5;
 
 module.exports.main = {
   get: function (req, res) {
