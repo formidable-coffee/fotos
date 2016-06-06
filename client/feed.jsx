@@ -24,6 +24,7 @@ class Feed extends React.Component {
   getData() {
     console.log(fbId);
     $.get('/dashboard', {user_id: fbId}, function(data) {
+      console.log("Data from db =>", data);
       this.setState({arcs:data});
       console.log('state is: ', this.state.arcs);
     }.bind(this));
@@ -101,7 +102,7 @@ class Feed extends React.Component {
         <h2 className="page-title">Your past stories</h2>
         <div className="gallery-container">
           {sampleData.map((arc) => {
-            console.log(arc);
+            // console.log(arc);
             return (
             <Arc photoArc={arc} />
             );} 

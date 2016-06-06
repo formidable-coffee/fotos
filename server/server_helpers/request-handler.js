@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var path = require('path');
 var bluebird = require('bluebird'); 
+var url = require('url');
 var db = require('../db/config.js');
 var Users = require('../db/collections/users');
 var User = require('../db/models/user');
@@ -102,20 +103,48 @@ module.exports.create = {
               // }
             }
           });
-    // res.send('success'); 
+    res.send('success'); 
   }
 }
 
 module.exports.dashboard = {
-	// get: function (req, res) {
-	// 	new Arc({token: '124'}).fetch({withRelated:['user', 'photos']}).then(function(data) {
-	// 		console.log("IN GET REQUEST TO DB", data); 
-	// 	}); 
-	// }
 	get: function(req, res) {
 		var url_parts = url.parse(req.url, true);
-		var query = url_parts.query;
-		console.log('query is an object as: ', query);
-		res.send('success');
+		var userId = url_parts.query.user_id;
+
+    var results = [];
+    User.forge({fbId: userId})
+      .fetch()
+      .then(function (userMatched) {
+        Arcs.reset()
+          .query({where: {user_id: userMatched.id}})
+          .fetch()
+          .then(function (arcMatched) {
+            // make array of matching arc id
+            for (var arcNo = 0; arcNo < arcMatched.length; arcNo++) {
+              results.push([]);
+              (function (n) {
+                  Images.reset()
+                    .query({where: {arc_id: arcMatched.models[n].id}})
+                    .fetch()
+                    .then(function (imageMatched) {
+                      // loop through all images in each arc
+                      for (var img = 0; img < imageMatched.length; img++) {
+                        // console.log('All images in this arc =>', imageMatched.models[img].attributes.url, 'here is n =>', n);
+                        results[n].push({thumbnail: imageMatched.models[img].attributes.url, src: imageMatched.models[img].attributes.url});
+                      }
+                    })
+                    .then(function () {
+                      if (n === arcMatched.length -1) {
+                        res.json(results);  // => send back results
+                      }
+                    })
+              }) (arcNo);
+            }
+          })
+      });
+
+		// console.log('query is an object as: ', );
+		// res.send('success');
 	}
 }; 
