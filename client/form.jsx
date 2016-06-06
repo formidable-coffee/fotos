@@ -16,17 +16,31 @@ class Form extends React.Component {
 	}
   
   submitHandler (startDate, endDate, options) {
-    $.post({
-      url: '/create',
-      data: {
-        startDate: startDate,
-        endDate: endDate,
-        // options: options
-      },
-      success: function() {
-        console.log('success'); 
+
+    console.log(startDate, endDate, 'in submit handler'); 
+    var getPhotos = function (response) {
+      for (element in response.data) {
+        post = response.data[element]; 
+        console.log(post.id+ ": " + post.message); 
       }
-    });
+
+      if (i < 2) {
+        nextPage = response.paging.next;
+        console.log(nextPage);
+        i++;
+        $.get(nextPage, getPosts, 'json'); 
+      }
+    }; 
+    FB.api('me/photos?fields=images,created_time&until='+endDate+'&since='+startDate, function (response) {
+      console.log(response); 
+      $.post({
+        url: '/create',
+        data: response,
+        success: function() {
+          console.log('success'); 
+        }
+      });
+    }); 
   }
 
 	handleSubmit (e) {
@@ -34,7 +48,8 @@ class Form extends React.Component {
 		console.log("start is", this.state.startDate); 
 		console.log("end is", this.state.endDate); 
 
-		this.submitHandler(this.state.startDate, this.state.endDate);
+    this.submitHandler(this.state.startDate, this.state.endDate);
+
 	}
 
 	dropdownSelect (e) {
