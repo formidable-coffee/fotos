@@ -16,26 +16,17 @@ class Form extends React.Component {
 	}
   
   submitHandler (startDate, endDate, options) {
-
-    console.log(startDate, endDate, 'in submit handler'); 
-    var getPhotos = function (response) {
-      for (element in response.data) {
-        post = response.data[element]; 
-        console.log(post.id+ ": " + post.message); 
-      }
-
-      if (i < 2) {
-        nextPage = response.paging.next;
-        console.log(nextPage);
-        i++;
-        $.get(nextPage, getPosts, 'json'); 
-      }
-    }; 
+    console.log(startDate, endDate, 'in submit handler');
     FB.api('me/photos?fields=images,created_time&until='+endDate+'&since='+startDate, function (response) {
-      console.log(response); 
+      console.log(response);
+      var data = {
+              id: window.fbId,
+              photos: response
+            };
       $.post({
         url: '/create',
-        data: response,
+        data: JSON.stringify(data),
+        contentType: "application/json",
         success: function() {
           console.log('success'); 
         }
