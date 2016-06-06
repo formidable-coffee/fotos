@@ -33,6 +33,8 @@ app.post('/signin', requestHandler.signin.post);
 app.get('/create', requestHandler.create.get);
 app.post('/create', requestHandler.create.post); 
 
+app.get('/dashboard', requestHandler.dashboard.get); 
+
 app.listen(port, function () {
   console.log('Example app listening on port: ', + port + '!');
 });

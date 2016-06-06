@@ -4,7 +4,14 @@ https://waffle.io/formidable-coffee/fotos
 
 # Database setup
 
-1. Make sure that mysql server is running with in the terminal (by default there is no password):
+1. Initialize a mySQL server:
+
+    ```
+    $ mysql.server start
+    Starting mySQL
+      SUCCESS!
+    ```
+1. Start a mySQL server with in the terminal (by default there is no password):
 
     ```
     $ mysql -u root -p

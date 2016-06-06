@@ -6,9 +6,10 @@ import { hashHistory } from 'react-router';
 class FacebookButton extends React.Component {
   constructor (props) {
     super(props); 
-
+ 
     this.state = {
-      authenticated: false
+      authenticated: false,
+      userMessage: "", 
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -42,18 +43,22 @@ class FacebookButton extends React.Component {
       } else {
         FB.login(function(response) {
           console.log(response, 'outside api call')
+          var access_token = response.authResponse.accessToken; 
           if (response.authResponse) {
             FB.api('/me', function(response) {
               self.setState({authenticated: true});
-              $.post('/signin', response).done(function(data) {
-                console.log('sucessfully sent post request for user');
-                hashHistory.push('dashboard'); // Transition not working
+              console.log('in api call',response)
+              $.post('/signin', {name: response.name, userId: response.id, access_token: access_token}).done(function(data) {
+                console.log('success'); 
+                window.fbId = response.id; 
+                window.access_token = access_token; 
+                hashHistory.push('dashboard'); 
               }).fail(function(err) {
                 console.log(err, 'error in checkLoginState'); 
               }); 
             }); 
           } else {
-            console.log('user did not fully authenticate'); 
+            console.log('user did not authenticate'); 
           }
         })
       }
@@ -62,9 +67,10 @@ class FacebookButton extends React.Component {
 
   logout () {
     var self = this; 
+    console.log('is this working?'); 
     FB.logout(function(response) {
       self.setState({authenticated: false}); 
-      console.log
+      hashHistory.push('/login'); 
     })
   }
 
@@ -82,7 +88,6 @@ class FacebookButton extends React.Component {
     return (
       <div>
         <button onClick={this.handleClick}>{this.state.authenticated ? "Logout" : "Log in with Facebook"}</button>
-        <div></div> 
       </div>
     ); 
   }
