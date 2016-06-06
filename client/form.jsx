@@ -47,11 +47,8 @@ class Form extends React.Component {
 		e.preventDefault();
 		console.log("start is", this.state.startDate); 
 		console.log("end is", this.state.endDate); 
-    var self = this; 
-    console.log(Date.parse(this.state.startDate));    // endDate = dateChange(endDate); 
 
-		// this.submitHandler(Date.parse(self.state.startDate), Date.parse(self.state.endDate));
-    this.submitHandler(self.state.startDate, self.state.endDate);
+    this.submitHandler(this.state.startDate, this.state.endDate);
 
 	}
 
