@@ -17,25 +17,16 @@ class Form extends React.Component {
   
   submitHandler (startDate, endDate, options) {
 
-    console.log(startDate, endDate, 'in submit handler'); 
-    var getPhotos = function (response) {
-      for (element in response.data) {
-        post = response.data[element]; 
-        console.log(post.id+ ": " + post.message); 
-      }
-
-      if (i < 2) {
-        nextPage = response.paging.next;
-        console.log(nextPage);
-        i++;
-        $.get(nextPage, getPosts, 'json'); 
-      }
-    }; 
     FB.api('me/photos?fields=images,created_time&until='+endDate+'&since='+startDate, function (response) {
       console.log(response); 
+      var data = {
+        id: window.fbId,
+        photos: response
+      };
+
       $.post({
         url: '/create',
-        data: response,
+        data: data,
         success: function() {
           console.log('success'); 
         }
@@ -58,19 +49,27 @@ class Form extends React.Component {
 
 	render () {
 		return (
-			<div className='inputForm'> 
-				<form >
-					<input type="date" name="startDate" className="datePicker" onChange={(event)=> this.setState({startDate: event.target.value})} />
-					<input type="date" name="endDate" className="datePicker" onChange={(event)=> this.setState({endDate: event.target.value})} />
-				{/* <select onChange={this.dropdownSelect}>
+			<div className='inputForm'>
+        <form> 
+          <p className='inputs'>
+					 <label>Start Date: </label>
+           <input type="date" name="startDate" className="datePicker" onChange={(event)=> this.setState({startDate: event.target.value})} />
+					</p>
+          <p className='inputs'>
+            <label>End Date: </label>
+            <input type="date" name="endDate" className="datePicker" onChange={(event)=> this.setState({endDate: event.target.value})} />
+				  </p>
+        {/* <select onChange={this.dropdownSelect}>
 						<option></option>
 						<option value="filter1">Photos of me</option>
 						<option value="filter2"></option>
 						<option value="filter3">Photos in other countries</option>
 					</select> */} 
-					<button type="submit" onClick={this.handleSubmit}>See your photos</button>
-				</form>
-			</div>
+					<p>
+            <button type="submit" onClick={this.handleSubmit}>See your photos</button>
+				  </p>
+        </form>
+      </div>
 		)
 	}
 	

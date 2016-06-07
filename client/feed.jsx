@@ -23,7 +23,7 @@ var Feed = (props) => {
   }];
   return (
     <div>
-      <h2 className="page-title">Your past stories</h2>
+      <h2 className="page-title">Your Stories</h2>
       <div className="gallery-container">
         <Arc photoArc={sampleData} />
       </div>
