@@ -100,17 +100,10 @@
   left: 200px;
   /*display: flex;*/
   overflow:auto;
-<<<<<<< HEAD
   /*justify-content: flex-start;*/
   /*align-items: center;*/
   /*flex-direction: column;*/
   border-radius: 3px; 
-=======
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 3px; 
-  flex-direction: column;
->>>>>>> fc3c95ef15eb94d5ded3cd94ae00e9c4fa777ef4
 }
 
 .section {
@@ -177,11 +170,8 @@ p > button {
   font-color: white;
   border-radius: 3px;
   padding: 5px;
-<<<<<<< HEAD
   font-family: 'Raleway', sans-serif;
   width: 150px;
-=======
->>>>>>> fc3c95ef15eb94d5ded3cd94ae00e9c4fa777ef4
 }
 
 .facebook-login {
@@ -193,7 +183,6 @@ p > button {
 .facebook-login:hover {
   background-color: rgba(10,10,10,0.5);
 }
-<<<<<<< HEAD
 
 .brand a{
   font-family: 'Pacifico', cursive;
@@ -201,5 +190,4 @@ p > button {
   color: white;
   font-size: 33px;
 }
-=======
->>>>>>> fc3c95ef15eb94d5ded3cd94ae00e9c4fa777ef4
+

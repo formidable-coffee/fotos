@@ -6,7 +6,6 @@ import $ from 'jquery';
 
 // expecting to be passed an array of urls in props
 
-<<<<<<< HEAD
 class Feed extends React.Component {
   constructor(props) {
     super(props);
