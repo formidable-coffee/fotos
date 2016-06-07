@@ -39,6 +39,20 @@ class Feed extends React.Component {
     console.log(fbId);
     $.get('/dashboard', {user_id: fbId}, function(data) {
       console.log("Data from db =>", data);
+      var uniqueVals = []; 
+      for(var i = 0; i< data.length; i++){    
+          if(uniqueVals.indexOf(data[i].src) === -1){
+              uniqueVals.push(data[i]);        
+          }        
+      }; 
+      data = uniqueVals.filter(function(val) {
+        console.log(val); 
+        if (val.length > 0) {
+          return true; 
+        } else {
+          return false; 
+        }
+      }); 
       this.setState({arcs:data});
       console.log('state is: ', this.state.arcs);
     }.bind(this));

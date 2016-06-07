@@ -9,6 +9,7 @@ var linkStyle = {marginTop: '15px', color:'white'};
 var topNav = (props) => (
 	<Navbar className="navbar">		
 		<Nav className="links">
+      <NavItem className="brand">FotoTime</NavItem>
 			<NavItem style={linkStyle}><Link to="/dashboard" activeClassName="active" style={linkStyle}>Dashboard</Link></NavItem>
 			<NavItem style={linkStyle}><Link to="/create" activeClassName="active" style={linkStyle}>Create new story</Link></NavItem>
 		</Nav>

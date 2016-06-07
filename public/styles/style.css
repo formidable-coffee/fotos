@@ -1,5 +1,6 @@
 .navbar{
   height: 70px;
+  font-family: 'Raleway', sans-serif; 
 }
 
 .links, .logout {
@@ -26,9 +27,8 @@
   padding: 10px;
   border-radius: 5px;
   border-color: lightblue;
+  font-family: 'Raleway', sans-serif; 
 }
-
-
 
 .active {
   background-color:rgba(10,10,10,0.2); 
@@ -68,8 +68,12 @@
   margin-bottom: 100px;
   text-align: center;
   color: white;
+  font-family: 'Raleway', sans-serif; 
 }
 
+.login-title > h1{
+  font-family: 'Pacifico', cursive; 
+}
 .login-button {
   text-align: center;
   margin-bottom: 30px;
@@ -96,12 +100,8 @@
   overflow:auto;
   /*justify-content: flex-start;*/
   /*align-items: center;*/
-  border: 2px solid gray; 
   /*flex-direction: column;*/
-/*  justify-content: flex-start;
-  align-items: center;
   border-radius: 3px; 
-  flex-direction: column;*/
 }
 
 .section {
@@ -168,6 +168,8 @@ p > button {
   font-color: white;
   border-radius: 3px;
   padding: 5px;
+  font-family: 'Raleway', sans-serif;
+  width: 150px;
 }
 
 .facebook-login {
@@ -178,4 +180,11 @@ p > button {
 
 .facebook-login:hover {
   background-color: rgba(10,10,10,0.5);
+}
+
+.brand a{
+  font-family: 'Pacifico', cursive;
+  margin-top: 15px;
+  color: white;
+  font-size: 33px;
 }
