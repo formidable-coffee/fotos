@@ -15,7 +15,9 @@ var topNav = (props) => (
 		</Nav>
 		<Nav pullRight>
 			<NavItem className="logout" onClick={() => {
-        FB.logout();
+        if (window.FB) { 
+        	FB.logout();
+        }
         hashHistory.push('login'); 
       }}>Logout</NavItem>
 		</Nav>

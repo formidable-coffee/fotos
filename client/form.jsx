@@ -17,7 +17,7 @@ class Form extends React.Component {
   
   submitHandler (startDate, endDate, options) {
     console.log(startDate, endDate, 'in submit handler');
-    FB.api('me/photos?fields=images,created_time&limit=2000&until='+endDate+'&since='+startDate, function (response) {
+    FB.api('me/photos?fields=images,created_time&limit=2000&type=uploaded&until='+endDate+'&since='+startDate, function (response) {
       console.log(response);
       var data = {
               id: window.fbId,
