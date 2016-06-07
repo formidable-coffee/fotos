@@ -49,19 +49,27 @@ class Form extends React.Component {
 
 	render () {
 		return (
-			<div className='inputForm'> 
-				<form >
-					<input type="date" name="startDate" className="datePicker" onChange={(event)=> this.setState({startDate: event.target.value})} />
-					<input type="date" name="endDate" className="datePicker" onChange={(event)=> this.setState({endDate: event.target.value})} />
-				{/* <select onChange={this.dropdownSelect}>
+			<div className='inputForm'>
+        <form> 
+          <p className='inputs'>
+					 <label>Start Date: </label>
+           <input type="date" name="startDate" className="datePicker" onChange={(event)=> this.setState({startDate: event.target.value})} />
+					</p>
+          <p className='inputs'>
+            <label>End Date: </label>
+            <input type="date" name="endDate" className="datePicker" onChange={(event)=> this.setState({endDate: event.target.value})} />
+				  </p>
+        {/* <select onChange={this.dropdownSelect}>
 						<option></option>
 						<option value="filter1">Photos of me</option>
 						<option value="filter2"></option>
 						<option value="filter3">Photos in other countries</option>
 					</select> */} 
-					<button type="submit" onClick={this.handleSubmit}>See your photos</button>
-				</form>
-			</div>
+					<p>
+            <button type="submit" onClick={this.handleSubmit}>See your photos</button>
+				  </p>
+        </form>
+      </div>
 		)
 	}
 	

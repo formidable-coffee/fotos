@@ -3,8 +3,8 @@ import ReactBootstrap from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { NavItem } from 'react-bootstrap';
-import { Link } from 'react-router';
-var linkStyle = {marginTop: '20px', color:'white'};
+import { Link, hashHistory } from 'react-router';
+var linkStyle = {marginTop: '15px', color:'white'};
 
 var topNav = (props) => (
 	<Navbar className="navbar">		
@@ -13,7 +13,10 @@ var topNav = (props) => (
 			<NavItem style={linkStyle}><Link to="/create" activeClassName="active" style={linkStyle}>Create new story</Link></NavItem>
 		</Nav>
 		<Nav pullRight>
-			<NavItem className="logout"><Link to="/login">Logout</Link></NavItem>
+			<NavItem className="logout" onClick={() => {
+        FB.logout();
+        hashHistory.push('login'); 
+      }}>Logout</NavItem>
 		</Nav>
  </Navbar>
 );

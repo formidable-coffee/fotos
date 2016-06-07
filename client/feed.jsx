@@ -6,7 +6,6 @@ import $ from 'jquery';
 
 // expecting to be passed an array of urls in props
 
-
 class Feed extends React.Component {
   constructor(props) {
     super(props);
@@ -48,7 +47,7 @@ class Feed extends React.Component {
   render() {
     return (
       <div>
-        <h2 className="page-title">Your past stories</h2>
+        <h2 className="page-title">Your Stories</h2>
         <div className="gallery-container">
           {this.state.arcs.map((arc) => {
             // console.log(arc);

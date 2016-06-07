@@ -4,21 +4,34 @@
 
 .links, .logout {
   margin-top: 20px;
+  /*margin-bottom: 20px;*/
 }
 
-.links {
-  font-size: 30px;
+.links a{
+  font-size: 20px;
   color: white;
+  padding: 7px 15px 7px 15px;
+  /*height: 70px;*/
 }
 
 .page-title {
   margin-top: 70px;
+  background-color: rgba(10,10,10,0.6);
   position: absolute;
-  left: 500px;
+  left: 200px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%; 
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  border-color: lightblue;
 }
 
+
+
 .active {
-  background-color:rgba(0,0,255,0.2)
+  background-color:rgba(10,10,10,0.2); 
 }
 
 .signIn {
@@ -75,7 +88,7 @@
 .gallery-container {
   height: 600px;
   width: 70%; 
-  background: black;
+  background: white;
   position: relative;
   top: 150px;
   left: 200px;
@@ -85,6 +98,10 @@
   /*align-items: center;*/
   border: 2px solid gray; 
   /*flex-direction: column;*/
+/*  justify-content: flex-start;
+  align-items: center;
+  border-radius: 3px; 
+  flex-direction: column;*/
 }
 
 .section {
@@ -93,8 +110,8 @@
   margin-top: 50px;
   height: 150px;
   width: 80%;
-  border: 3px solid gray;
-  border-radius: 10px;
+  border: 3px solid lightblue;
+  border-radius: 3px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -106,3 +123,59 @@
 */  
 }
 
+.inputForm {
+  width: 70%; 
+  position: relative;
+  top: 80px;
+  left: 200px;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: stretch;
+  background: white; 
+  height: 250px;
+  width: 70%;
+  border-radius: 3px;
+  padding: 30px;
+}
+
+form > p {
+  flex-grow: 1;
+  min-width: 300px; 
+  margin: 20px;
+}
+
+.inputs > label {
+  flex-grow: 1;
+  color: black;
+  font-size: 17px;
+  flex-basis: 100px;
+  width: 100px;
+  border-radius: 3px; 
+}
+
+.inputs > input {
+  flex-grow: 2; 
+  flex-basis: 300px;
+  width: 300px;
+  margin: auto;
+}
+
+p > button {
+  background-color: #A4C73C;
+  float: right;
+  margin: 10px;
+  border: none;
+  font-color: white;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.facebook-login {
+  background-color: transparent;
+  border: 3px solid lightblue;
+  width: 200px;
+}
+
+.facebook-login:hover {
+  background-color: rgba(10,10,10,0.5);
+}
