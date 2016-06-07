@@ -20,8 +20,10 @@ var Users = require('./db/collections/users.js');
 var app = express();
 
 var port = 4000;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false })); // Fixes 404 errors for empty response body
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false })); // Fixes 404 errors for empty response body
 app.use(helpers.logger);
 app.use(express.static(__dirname + '/../public')); 
 

@@ -49,7 +49,7 @@ module.exports.signin = {
 }; 
 
 // take an array and return arr selecting only =limit # of elements
-var minimizeArr = function (arr, targetLength) {
+var minimizeAndRandArr = function (arr, targetLength) {
   var totalLen = arr.length;
   var di = totalLen/targetLength;
   var results = [];
@@ -58,7 +58,9 @@ var minimizeArr = function (arr, targetLength) {
     return arr;
   } else {
     for (var i = 0; i < totalLen; i += di) {
-      results.push(arr[Math.floor(i)]);
+      var ind = Math.floor(i + Math.floor(Math.random()*di));
+      console.log(ind);
+      results.push(arr[ind]);
     }
   }
   return results;
@@ -71,8 +73,8 @@ module.exports.create = {
 
   post: function (req, res) {
     // store obj from fb api calls into db
-    console.log("post request from client", req.body);
-    var imgUrl = minimizeArr(req.body.photos.data, limit);
+    console.log("post request from client", req.body.photos.data.length);
+    var imgUrl = minimizeAndRandArr(req.body.photos.data, limit);
       // user has already been created
         User.forge({fbId: req.body.id})
           .fetch()
@@ -84,7 +86,7 @@ module.exports.create = {
             return arc.save({user_id: userMatched.id});
           })
           .then(function (newArc) {
-            console.log("A new arc has been added =>", newArc);
+            console.log("Images in arc =>", imgUrl);
 
           // store img into new arc
             for (var imgId = 0; imgId < imgUrl.length; imgId++) {
@@ -92,6 +94,7 @@ module.exports.create = {
               // for (var imgSize = 0; imgSize < imgSizeArr.length; imgSize++) {
                 // var img = imgSizeArr[imgSize];
                 var img = imgSizeArr[0];
+                console.log("Img instance", img);
                 var image = new Image({
                   height: img.height,
                   width: img.width,
@@ -99,7 +102,7 @@ module.exports.create = {
                 });
 
                 image.save({arc_id: newArc.id});
-                console.log("A new img has been added => ", image);
+                // console.log("A new img has been added => ", image);
               // }
             }
           });
@@ -111,7 +114,6 @@ module.exports.dashboard = {
 	get: function(req, res) {
 		var url_parts = url.parse(req.url, true);
 		var userId = url_parts.query.user_id;
-
     var results = [];
     User.forge({fbId: userId})
       .fetch()
@@ -121,16 +123,23 @@ module.exports.dashboard = {
           .fetch()
           .then(function (arcMatched) {
             // make array of matching arc id
+            // Images.reset();
             for (var arcNo = 0; arcNo < arcMatched.length; arcNo++) {
               results.push([]);
               (function (n) {
                   Images.reset()
-                    .query({where: {arc_id: arcMatched.models[n].id}})
+                    .query(function (qb) {
+                      qb.where('arc_id', '=', arcMatched.models[n].id);
+                    })
                     .fetch()
                     .then(function (imageMatched) {
+                      console.log('arc id MATCHING', arcMatched.models[n].id);
+                      // console.log("IMGS => ", imageMatched);
+                      console.log("arc id of image", imageMatched.models[0].attributes.arc_id);
                       // loop through all images in each arc
                       for (var img = 0; img < imageMatched.length; img++) {
                         // console.log('All images in this arc =>', imageMatched.models[img].attributes.url, 'here is n =>', n);
+                        // console.log()
                         results[n].push({thumbnail: imageMatched.models[img].attributes.url, src: imageMatched.models[img].attributes.url});
                       }
                     })
