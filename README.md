@@ -6,12 +6,9 @@ https://waffle.io/formidable-coffee/fotos
 1. [Project Overview] (#Project-Overview)
 2. [Getting Started] (#Getting-Started)
 3. [Technologies] (#Technologies)
-4. [Architecture] (#Architecture)
-5. [Team] (#Team)
-6. [Contributing] (#Contributing)
+4. [Team] (#Team)
 
-
-##Project Overviw
+##Project Overview <a name="Project-Overview"></a>
 
 Most people have hundreds of photos stored in countless websites. It takes a significant amount of time to scroll through all of your photos to find your best memories from years ago. With Foto Time, we give you access to your memories. Choose a time range and we'll pick out a few photos from that time period. All of your photo stories are saved with Foto Time so you can review them anytime. 
 
@@ -21,9 +18,10 @@ Most people have hundreds of photos stored in countless websites. It takes a sig
 ![stories] (https://cloud.githubusercontent.com/assets/17868916/15845440/f15528dc-2c27-11e6-8a64-2fd9fdd9ed69.png)
 ### Create a new story:
 ![create-new](https://cloud.githubusercontent.com/assets/17868916/15845439/f152baa2-2c27-11e6-944e-e518f249d792.png)
-## Getting Started
 
-### Project Setup
+## Getting Started <a name="Getting-Started"></a>
+
+### Project Setup 
 
 1. Install dependencies
 
@@ -92,7 +90,7 @@ Or
     ```
     $ npm start
     ````
-##Technologies
+## Technologies <a name="Technologies"></a>
 
 #### Front end: 
 - React
@@ -111,7 +109,7 @@ Or
 
 ![DBschema](https://raw.githubusercontent.com/formidable-coffee/fotos/master/server/db/Screen%20Shot%202016-05-30%20at%2015.16.35.png)
 
-###Directory Layout
+### Directory Layout
     ```
     +-- /client/
     |   +-- /app.jsx/
@@ -148,7 +146,7 @@ Or
     +-- /STYLE-GUIDE.md
     +-- /webpack.config.js
 
-## Team
+## Team <a name="Team"></a>
     - Matt Naing @mattgrisanu
     - Adam Lessen @lessenadam
     - Erin Kavanaugh @erinkav
