@@ -7,6 +7,7 @@ https://waffle.io/formidable-coffee/fotos
 2. [Getting Started] (#Getting-Started)
 3. [Technologies] (#Technologies)
 4. [Team] (#Team)
+5. [Contributing] (#Contributing)
 
 ##Project Overview <a name="Project-Overview"></a>
 
@@ -150,3 +151,7 @@ Or
     - Matt Naing @mattgrisanu
     - Adam Lessen @lessenadam
     - Erin Kavanaugh @erinkav
+
+## Contributing <a name="Contributing"></a>
+
+See our contributing guide to get started [here](CONTRIBUTING.md)
