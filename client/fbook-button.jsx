@@ -87,7 +87,7 @@ class FacebookButton extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>{this.state.authenticated ? "Logout" : "Log in with Facebook"}</button>
+        <button className='facebook-login' onClick={this.handleClick}>Log in with Facebook</button>
       </div>
     ); 
   }
