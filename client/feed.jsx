@@ -11,20 +11,20 @@ class Feed extends React.Component {
     super(props);
     this.state = {
       arcs: [[{
-        thumbnail:"http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg",
-        src:"http://assets.fodors.com/destinations/54494/alamo-square-san-francisco-california-usa_main.jpg"
+        thumbnail:'https://scontent.xx.fbcdn.net/v/t1.0-9/167755_497227698982_1920506_n.jpg?oh=a471771e7b582e97973c57d16b6e93ba&oe=580C2851',
+        src:'https://scontent.xx.fbcdn.net/v/t1.0-9/167755_497227698982_1920506_n.jpg?oh=a471771e7b582e97973c57d16b6e93ba&oe=580C2851'
       }, {
-        thumbnail: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg",
-        src: "https://pixabay.com/static/uploads/photo/2015/03/26/09/48/golden-gate-bridge-690346_960_720.jpg"
+        thumbnail: "https://scontent.xx.fbcdn.net/v/t1.0-9/15616_10151388460539359_838434950_n.jpg?oh=746dc01788dce5a8e13286a0946e2dc3&oe=580416C4",
+        src: "https://scontent.xx.fbcdn.net/v/t1.0-9/15616_10151388460539359_838434950_n.jpg?oh=746dc01788dce5a8e13286a0946e2dc3&oe=580416C4"
       }, {
-        thumbnail: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2", 
-        src: "http://www.wheretraveler.com/sites/default/files/styles/main_slider/public/San-Francisco-shutterstock_121582312.jpg?itok=sGTj8sv2" 
+        thumbnail: "https://scontent.xx.fbcdn.net/t31.0-8/10818202_10204523535902787_7021998894279067222_o.jpg", 
+        src: "https://scontent.xx.fbcdn.net/t31.0-8/10818202_10204523535902787_7021998894279067222_o.jpg" 
       }, {
-        thumbnail: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg",
-        src: "http://www.dog-learn.com/dog-breeds/pomeranian/images/pomeranian-u6.jpg"
+        thumbnail: "https://scontent.xx.fbcdn.net/v/t1.0-9/150609_10151388457509359_1019271306_n.jpg?oh=86feb0e0c960c632c87c83da0f8f88f6&oe=57CE3BAB",
+        src: "https://scontent.xx.fbcdn.net/v/t1.0-9/150609_10151388457509359_1019271306_n.jpg?oh=86feb0e0c960c632c87c83da0f8f88f6&oe=57CE3BAB"
       }, {
-        thumbnail: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg",
-        src: "http://animalsbreeds.com/wp-content/uploads/2014/11/Pomeranian-11.jpg"
+        thumbnail: "https://scontent.xx.fbcdn.net/v/t1.0-9/24523_410348024358_6847090_n.jpg?oh=0e7de98d7978a3936a29d1a0a01a773d&oe=57D65F98",
+        src: "https://scontent.xx.fbcdn.net/v/t1.0-9/24523_410348024358_6847090_n.jpg?oh=0e7de98d7978a3936a29d1a0a01a773d&oe=57D65F98"
       }]] 
     }
     // this.componentDidMount.bind(this);
@@ -33,27 +33,31 @@ class Feed extends React.Component {
 
   componentDidMount() {
     this.getData();
+    console.log('cdm'); 
   }
 
   getData() {
     console.log(fbId);
+
+    var self = this; 
     $.get('/dashboard', {user_id: fbId}, function(data) {
       console.log("Data from db =>", data);
-      var uniqueVals = []; 
-      for(var i = 0; i< data.length; i++){    
-          if(uniqueVals.indexOf(data[i].src) === -1){
-              uniqueVals.push(data[i]);        
-          }        
-      }; 
-      data = uniqueVals.filter(function(val) {
+    
+      data = data.filter(function(val) {
         console.log(val); 
         if (val.length > 0) {
+          self.state.arcs.push(val); 
+          console.log('filter function', self.state.arcs); 
+          self.forceUpdate(); 
+
           return true; 
         } else {
           return false; 
         }
       }); 
-      this.setState({arcs:data});
+
+      // this.setState({arcs: this.state.arcs.push([data])});
+      console.log(this.state.arcs); 
       console.log('state is: ', this.state.arcs);
     }.bind(this));
   }

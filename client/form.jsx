@@ -28,7 +28,8 @@ class Form extends React.Component {
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function() {
-          console.log('success'); 
+          console.log('success');
+          hashHistory.push('dashboard');  
         }
       });
     }); 
