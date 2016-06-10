@@ -84,7 +84,7 @@ Or
 1. Changes to React components that interact with our server and database
 
     ```
-    $ npm prod
+    $ npm run prod
     ```
 2. Monitor changes to just front end components
     
